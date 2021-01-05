@@ -1,0 +1,53 @@
+body {
+    background-color: #272727;
+}
+
+.input-field [type=text] {
+    color: white;
+}
+
+/* label underline focus color */
+
+.row .input-field input:focus {
+    border-bottom: 1px solid #8BC34A !important;
+    box-shadow: 0 1px 0 0 #8BC34A !important
+}
+
+/* icon focus color */
+
+.input-field .prefix.active {
+    color: #8BC34A;
+}
+
+/* buttons color */
+
+.btn, .btn:visited, .btn:focus {
+    background-color: #212121;
+}
+
+.btn:hover {
+    background-color: #8BC34A;
+}
+
+#mobile-nav {
+    width: 50%;
+}
+
+/* TABOVI */
+
+.tabs {
+    background: transparent;
+}
+
+.tabs .indicator {
+    background-color: #8BC34A;
+}
+
+.tabs .tab a, .tabs .tab a.active {
+    color: #8BC34A;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active, .tabs .tab a:hover {
+    color: #8BC34A;
+    background: #212121;
+}

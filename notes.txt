@@ -1,0 +1,12 @@
+tutorial: https://youtu.be/MaP3vO-vEsg?t=1184
+
+green-accent: #8BC34A
+grey: #212121
+
+
+TODO:
+    provera unosa godine za film [cetvorocifreni broj koji nije veci od sistemskog datuma]
+    provera unosa ocene za film [realan broj izmedju 1 i 10]
+    dodaj dugmice [post, get, delete, update]
+    tabela filmova ispod ili neki drugi prikaz
+    (eventualno meni? home, search, gallery[u galeriji ce biti omoguceno sortiranje filmova])
