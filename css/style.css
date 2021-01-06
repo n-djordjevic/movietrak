@@ -1,53 +1,49 @@
 body {
-    background-color: #272727;
+    background-color: #272727 !important;
 }
 
 .input-field [type=text] {
-    color: white;
+    color: white !important;
 }
 
-/* label underline focus color */
+textarea {
+    color: white !important;
+}
+
+.browser-default {
+    background-color: #272727 !important;
+}
 
 .row .input-field input:focus {
     border-bottom: 1px solid #8BC34A !important;
-    box-shadow: 0 1px 0 0 #8BC34A !important
+    box-shadow: 0 1px 0 0 #8BC34A !important;
 }
-
-/* icon focus color */
 
 .input-field .prefix.active {
-    color: #8BC34A;
+    color: #8BC34A !important;
 }
 
-/* buttons color */
-
 .btn, .btn:visited, .btn:focus {
-    background-color: #212121;
+    background-color: #212121 !important;
 }
 
 .btn:hover {
-    background-color: #8BC34A;
+    background-color: #8BC34A !important;
 }
 
-#mobile-nav {
-    width: 50%;
+/* selektor filmova */
+
+.dropdown-content.select-dropdown li span  {
+    background-color: #272727 !important;
+    color: white !important;
 }
 
-/* TABOVI */
-
-.tabs {
-    background: transparent;
+.dropdown-content.select-dropdown li span:hover  {
+    background-color: #212121 !important;
+    color: #8BC34A !important;
 }
 
-.tabs .indicator {
-    background-color: #8BC34A;
-}
-
-.tabs .tab a, .tabs .tab a.active {
-    color: #8BC34A;
-}
-
-.tabs .tab a:focus, .tabs .tab a:focus.active, .tabs .tab a:hover {
-    color: #8BC34A;
-    background: #212121;
+.dropdown-content {
+    max-height: 400px !important;
+    overflow-y: auto !important;
 }

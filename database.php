@@ -43,8 +43,21 @@ class Database {
         return $this->result;
     }
 
-    function select($table="ocene-filmova") {
+    function select($table="ocene-filmova", $rows="*", $join_table="filmovi", $join_key1="id_ocene", $join_key2="id", $where =null, $order=null) {
+        $q = 'SELECT '.$rows.' FROM '.$table;
         
+        if($join_table!=null){
+            //SELECT * FROM filmovi JOIN ocene-filmova ON ocene-filmova.id_ocene = filmovi.id
+            $q.= ' JOIN '.$join_table.' ON '.$table.'.'.$join_key1.'='.$join_table.'.'.$join_key2;
+        }
+        if($where!=null){
+            $q.=' WHERE '.$where;
+        }
+        if($order!=null){
+            $q.=' ORDER BY '.$order;
+        }
+
+        $this->executeQuery($q);
     }
 
     function insert() {
