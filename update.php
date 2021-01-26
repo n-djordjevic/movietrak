@@ -67,7 +67,7 @@ if (isset($_GET['id'])) {
 		<h2>Ažuriranje filma</h2>
 		<form action="" method="post">
 			<fieldset>
-				<legend>Informacije o filmuČ</legend>
+				<legend>Informacije o filmu:</legend>
 				Naslov:<br>
 				<input type="text" name="naslov" value="<?php echo $naslov; ?>">
 				<input type="hidden" name="film_id" value="<?php echo $film_id; ?>">
@@ -78,7 +78,7 @@ if (isset($_GET['id'])) {
 				Režiser:<br>
 				<input type="text" name="reziser" value="<?php echo $reziser; ?>">
 				<br><br>
-				<input type="submit" value="Update" name="update_film">
+				<input type="submit" value="Ažuriraj" name="update_film">
 			</fieldset>
 		</form>
 
@@ -119,7 +119,7 @@ if (isset($_GET['id_ocene'])) {
 				<input type="text" name="opis" value="<?php echo $opis; ?>">
 
 				<br><br>
-				<input type="submit" value="Update" name="update_ocena">
+				<input type="submit" value="Ažuriraj" name="update_ocena">
 			</fieldset>
 		</form>
 

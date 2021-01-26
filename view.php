@@ -18,10 +18,35 @@ $ocene_result = $conn->query($ocene_sql);
 	<title>View Page</title>
 
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 
 <body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="index.php">MovieTRAK</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#">Preged filmova i ocena</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Dodaj filmove/ocene</a>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Pretraga" aria-label="Pretraga">
+					<button class="btn btn-outline-success" type="submit">Pretražo</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
 	<div class="container">
 		<h2>Filmovi</h2>
 		<table class="table">
@@ -46,7 +71,7 @@ $ocene_result = $conn->query($ocene_sql);
 							<td><?php echo $row['naslov']; ?></td>
 							<td><?php echo $row['godina']; ?></td>
 							<td><?php echo $row['reziser']; ?></td>
-							<td><a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;<a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
+							<td><a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Ažuriraj</a>&nbsp;<a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Obriši</a></td>
 						</tr>
 
 				<?php		}
@@ -89,7 +114,7 @@ $ocene_result = $conn->query($ocene_sql);
 							<td><?php echo $naslov_result->fetch_assoc()['naslov']; ?></td>
 							<td><?php echo $row['ocena']; ?></td>
 							<td><?php echo $row['opis']; ?></td>
-							<td><a class="btn btn-info" href="update.php?id_ocene=<?php echo $row['id']; ?>">Edit</a>&nbsp;<a class="btn btn-danger" href="delete.php?id_ocene=<?php echo $row['id']; ?>">Delete</a></td>
+							<td><a class="btn btn-info" href="update.php?id_ocene=<?php echo $row['id']; ?>">Ažuriraj</a>&nbsp;<a class="btn btn-danger" href="delete.php?id_ocene=<?php echo $row['id']; ?>">Obriši</a></td>
 						</tr>
 
 				<?php		}

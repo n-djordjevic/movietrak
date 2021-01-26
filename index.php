@@ -16,15 +16,53 @@ include "database.php";
 ?>
 
 <body>
-    <h1>Dobrodosli na MovieTRAK</h1>
 
-    <a class="btn btn-primary" href="view.php" role="button">See your track record</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">MovieTRAK</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="view.php">Preged filmova i ocena</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dodaj filmove/ocene</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Pretraga" aria-label="Pretraga">
+                    <button class="btn btn-outline-success" type="submit">Pretraži</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-  
+    <div class="container mt-5">
+        <div class="row text-center">
+                <h1>Dobrodošli na MovieTRAK</h1>
+        </div>
+        <br><br>
+        <div class="row text-center">
+            <div class="col-sm mx-auto">
+                <a class="btn btn-primary" href="view.php" role="button">Pregled filmova i ocena</a>
+            </div>
+            <div class="col-sm mx-auto">
+                <a class="btn btn-primary" href="view.php" role="button">Besplatna mema</a>
+            </div>
+            <div class="col-sm">
+            <a class="btn btn-primary" href="view.php" role="button">Dobra mušema</a>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 <script>
-    
+
 </script>
 
 </html>
