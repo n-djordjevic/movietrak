@@ -36,12 +36,12 @@ $ocene_result = $conn->query($ocene_sql);
 						<a class="nav-link active" aria-current="page" href="#">Preged filmova i ocena</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Dodaj filmove/ocene</a>
+						<a class="nav-link" href="create.php">Dodaj filmove/ocene</a>
 					</li>
 				</ul>
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Pretraga" aria-label="Pretraga">
-					<button class="btn btn-outline-success" type="submit">Pretražo</button>
+					<button class="btn btn-outline-success" type="submit">Pretraži</button>
 				</form>
 			</div>
 		</div>

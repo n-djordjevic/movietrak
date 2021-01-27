@@ -29,7 +29,7 @@ include "database.php";
                         <a class="nav-link" aria-current="page" href="view.php">Preged filmova i ocena</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dodaj filmove/ocene</a>
+                        <a class="nav-link" href="create.php">Dodaj filmove/ocene</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -47,13 +47,10 @@ include "database.php";
         <br><br>
         <div class="row text-center">
             <div class="col-sm mx-auto">
-                <a class="btn btn-primary" href="view.php" role="button">Pregled filmova i ocena</a>
             </div>
             <div class="col-sm mx-auto">
-                <a class="btn btn-primary" href="view.php" role="button">Besplatna mema</a>
             </div>
             <div class="col-sm">
-            <a class="btn btn-primary" href="view.php" role="button">Dobra mušema</a>
             </div>
         </div>
     </div>
