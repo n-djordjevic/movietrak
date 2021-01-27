@@ -8,14 +8,21 @@ if (isset($_POST['submit_film'])) {
     $reziser = $_POST['reziser'];
 
 
-    $film_sql = "INSERT INTO `filmovi`(`naslov`, `godina`, `reziser`) VALUES (`$naslov_filma`, `$godina`, `$reziser`)";
-    $film_result = $conn->query($film_sql);
-    
-    if ($film_result == TRUE) {
-        echo "Uspešno ste uneli novi film u bazu.";
+    if ($godina > date("Y") || $godina < 1888) {
+        echo "Prevelika godina!";
     } else {
-        echo "Error:". $film_sql ."<br>". $conn->error;
+
+        $film_sql = "INSERT INTO `filmovi`(`naslov`, `godina`, `reziser`) VALUES ('$naslov_filma', '$godina', '$reziser')";
+        $film_result = $conn->query($film_sql);
+
+        if ($film_result == TRUE) {
+            echo "Uspešno ste uneli novi film u bazu.";
+            header('Location: view.php');
+        } else {
+            echo "Error:" . $film_sql . "<br>" . $conn->error;
+        }
     }
+    $conn->close();
 }
 
 ?>
@@ -27,7 +34,7 @@ if (isset($_POST['submit_film'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MovieTRAK</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
@@ -35,7 +42,7 @@ if (isset($_POST['submit_film'])) {
 <body>
 
     <h2>Forma za unos novog filma</h2>
-    <form>
+    <form action="" method="POST">
         <div class="form-group">
             <label for="naslov">Naslov filma</label>
             <input type="text" class="form-control" name="naslov" placeholder="Unesite naslov filma">
@@ -48,7 +55,7 @@ if (isset($_POST['submit_film'])) {
             <label for="reziser">Reziser/i</label>
             <input type="text" class="form-control" name="reziser" placeholder="Unesite ime/na rezera">
         </div>
-        <button type="submit" name="submit_film" value="submit_film" class="btn btn-primary">Potvrdi</button>
+        <input type="submit" name="submit_film" value="Potvrdi" class="btn btn-primary">
     </form>
 
 </body>

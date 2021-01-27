@@ -15,7 +15,7 @@ $ocene_result = $conn->query($ocene_sql);
 <html>
 
 <head>
-	<title>View Page</title>
+	<title>MovieTRAK</title>
 
 	<!-- bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -33,7 +33,7 @@ $ocene_result = $conn->query($ocene_sql);
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="#">Preged filmova i ocena</a>
+						<a class="nav-link active" aria-current="page" href="view.php">Preged filmova i ocena</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="create.php">Dodaj filmove/ocene</a>
