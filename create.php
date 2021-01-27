@@ -2,6 +2,10 @@
 
 include "database.php";
 
+function alert($message){
+    echo "<script>alert('$message');</script>"; 
+}
+
 if (isset($_POST['submit_film'])) {
     $naslov_filma = $_POST['naslov'];
     $godina = $_POST['godina'];
@@ -9,17 +13,17 @@ if (isset($_POST['submit_film'])) {
 
 
     if ($godina > date("Y") || $godina < 1888) {
-        echo "Prevelika godina!";
+        alert("Greska prilikom unosa godine");
     } else {
 
         $film_sql = "INSERT INTO `filmovi`(`naslov`, `godina`, `reziser`) VALUES ('$naslov_filma', '$godina', '$reziser')";
         $film_result = $conn->query($film_sql);
 
         if ($film_result == TRUE) {
-            echo "Uspešno ste uneli novi film u bazu.";
+            alert("Uspešno ste uneli novi film u bazu.");
             header('Location: view.php');
         } else {
-            echo "Error:" . $film_sql . "<br>" . $conn->error;
+            alert("Error:" . $film_sql . "<br>" . $conn->error); 
         }
     }
     $conn->close();

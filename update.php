@@ -1,6 +1,10 @@
 <?php
 include "database.php";
 
+function alert($message){
+    echo "<script>alert('$message');</script>"; 
+}
+
 // azuriranje filma
 if (isset($_POST['update_film'])) {
 	$naslov = $_POST['naslov'];
@@ -9,8 +13,8 @@ if (isset($_POST['update_film'])) {
 	$reziser = $_POST['reziser'];
 
 	// proveravamo da li je uneta godina veca od trenutne
-	if ($godina > date("Y")) {
-		echo "Prevelika godina!";
+	if ($godina > date("Y") || $godina < 1888) {
+		alert("Greška prilikom unosa godine");
 	} else {
 		// update upit
 		$sql = "UPDATE `filmovi` SET `naslov`='$naslov',`godina`='$godina',`reziser`='$reziser' WHERE `id`='$film_id'";
@@ -18,10 +22,10 @@ if (isset($_POST['update_film'])) {
 		$result = $conn->query($sql);
 
 		if ($result == TRUE) {
-			echo "Uspešno ste ažurirali film!";
+			alert("Uspešno ste ažurirali film!");
 			header('Location: view.php');
 		} else {
-			echo "Greška:" . $sql . "<br>" . $conn->error;
+			alert("Greška:" . $sql . "<br>" . $conn->error);
 		}
 	}
 }
@@ -31,18 +35,23 @@ if (isset($_POST['update_ocena'])) {
 	$ocena = $_POST['ocena'];
 	$ocena_id = $_POST['ocena_id'];
 	$opis = $_POST['opis'];
-
-	$sql = "UPDATE `ocene` SET `ocena`='$ocena',`opis`='$opis' WHERE `id`='$ocena_id'";
-
-
-	$result = $conn->query($sql);
-
-	if ($result == TRUE) {
-		echo "Uspešno ste ažurirali ocenu!";
-		header('Location: view.php');
+	
+	if ($ocena > 5 || $ocena < 1) {
+		alert("Greška prilikom unosa ocene.");
 	} else {
-		echo "Greška:" . $sql . "<br>" . $conn->error;
+		$sql = "UPDATE `ocene` SET `ocena`='$ocena',`opis`='$opis' WHERE `id`='$ocena_id'";
+	
+	
+		$result = $conn->query($sql);
+	
+		if ($result == TRUE) {
+			alert("Uspešno ste ažurirali ocenu!");
+			header('Location: view.php');
+		} else {
+			alert("Greška:" . $sql . "<br>" . $conn->error);
+		}
 	}
+
 }
 
 // ako u url-u imamo samo id kao paremater onda se radi o azuriranju filma
