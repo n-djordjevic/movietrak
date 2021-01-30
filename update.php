@@ -95,7 +95,7 @@ if (isset($_GET['id_filma'])) {
 				<h2>Ažuriraj film:</h2>
 				<h1><?php echo $naslov; ?></h1>
 			</div>
-			<div class="col-6">
+			<div class="col-6 row">
 				<form action="" method="POST">
 					<div class="form-group">
 						<label for="naslov">Naslov</label>
