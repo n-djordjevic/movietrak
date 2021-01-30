@@ -71,7 +71,7 @@ $ocene_result = $conn->query($ocene_sql);
 							<td><?php echo $row['naslov']; ?></td>
 							<td><?php echo $row['godina']; ?></td>
 							<td><?php echo $row['reziser']; ?></td>
-							<td><a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Ažuriraj</a>&nbsp;<a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Obriši</a></td>
+							<td><a class="btn btn-info" href="update.php?id_filma=<?php echo $row['id']; ?>">Ažuriraj</a>&nbsp;<a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Obriši</a></td>
 						</tr>
 
 				<?php		}
