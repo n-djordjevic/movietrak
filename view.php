@@ -1,12 +1,7 @@
 <?php
 include "database.php";
 
-// upiti
-$filmovi_sql = "SELECT * FROM filmovi";
-$ocene_sql = "SELECT * FROM ocene";
 
-$filmovi_result = $conn->query($filmovi_sql);
-$ocene_result = $conn->query($ocene_sql);
 
 
 ?>
@@ -19,10 +14,11 @@ $ocene_result = $conn->query($ocene_sql);
 
 	<!-- bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body>
-
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
@@ -43,27 +39,33 @@ $ocene_result = $conn->query($ocene_sql);
 					</li>
 				</ul>
 				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Pretraga" aria-label="Pretraga">
-					<button class="btn btn-outline-success" type="submit">Pretraži</button>
+					<input class="form-control me-2" type="search" placeholder="Pretraga po naslovu" onkeyup="search_func(this.value)" aria-label="Pretraga" id="pretraga">
+					<button class="btn btn-outline-success" type="submit">Osveži</button>
 				</form>
 			</div>
 		</div>
 	</nav>
-
 	<div class="container">
 		<h2>Filmovi</h2>
-		<table class="table">
+		<input type='hidden' id='sort' value='asc'>
+		<table class="table" id="f-tabela">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Naslov</th>
-					<th>Godina</th>
-					<th>Reziser</th>
+					<th><span id="id" onclick='sortTable("id");'><i id="id-icon" class="bi bi-arrow-down-short"></i>ID</th>
+					<th><span id="naslov" onclick='sortTable("naslov");'><i id="naslov-icon" class="bi bi-arrow-down-short"></i>Naslov</th>
+					<th><span id="godina" onclick='sortTable("godina");'><i id="godina-icon" class="bi bi-arrow-down-short"></i>Godina</th>
+					<th><span id="reziser" onclick='sortTable("reziser");'><i id="reziser-icon" class="bi bi-arrow-down-short"></i>Reziser</th>
 					<th>Opcije</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="filmovi-tabela">
+
+
 				<?php
+				// upiti
+				$filmovi_sql = "SELECT * FROM filmovi ORDER BY id ASC";
+				$filmovi_result = $conn->query($filmovi_sql);
+
 				if ($filmovi_result->num_rows > 0) {
 
 					while ($row = $filmovi_result->fetch_assoc()) {
@@ -79,6 +81,7 @@ $ocene_result = $conn->query($ocene_sql);
 
 				<?php		}
 				}
+
 				?>
 
 			</tbody>
@@ -101,8 +104,11 @@ $ocene_result = $conn->query($ocene_sql);
 					<th>Opcije</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="ocene-tabela">
 				<?php
+				$ocene_sql = "SELECT * FROM ocene ORDER BY id ASC";
+				$ocene_result = $conn->query($ocene_sql);
+
 				if ($ocene_result->num_rows > 0) {
 
 					while ($row = $ocene_result->fetch_assoc()) {
@@ -129,5 +135,56 @@ $ocene_result = $conn->query($ocene_sql);
 	</div>
 
 </body>
+<script>
+	function search_func(value) {
+
+		console.log(value)
+		var xhttp = new XMLHttpRequest();
+
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("filmovi-tabela").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "search.php?s=" + value, true);
+		xhttp.send();
+	}
+
+	function sortTable(columnName) {
+
+		var sort = $("#sort").val();
+		$.ajax({
+			url: 'sort.php',
+			type: 'post',
+			data: {
+				columnName: columnName,
+				sort: sort
+			},
+			success: function(response) {
+
+				$("#f-tabela tr:not(:first)").remove();
+
+				$("#f-tabela").append(response);
+				if (sort == "asc") {
+					$("#sort").val("desc");
+				} else {
+					$("#sort").val("asc");
+				}
+
+			}
+		});
+	}
+
+	$(document).on('click', function(e) {
+		clicked_id = e.target.id;
+		clicked_class = $('#' + e.target.id + "-icon").attr('class');
+		if (clicked_class.includes("down")) {
+			$('#' + e.target.id + "-icon").attr('class', 'bi bi-arrow-up-short');
+		} else {
+			$('#' + e.target.id + "-icon").attr('class', 'bi bi-arrow-down-short');
+		}
+	})
+
+</script>
 
 </html>

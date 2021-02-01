@@ -29,13 +29,12 @@ include "database.php";
                         <a class="nav-link" aria-current="page" href="view.php">Preged filmova i ocena</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="create.php">Dodaj filmove/ocene</a>
+                        <a class="nav-link" href="create.php?unos=0">Dodaj filmove</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="create.php?unos=1">Dodaj ocene</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Pretraga" aria-label="Pretraga">
-                    <button class="btn btn-outline-success" type="submit">Pretraži</button>
-                </form>
             </div>
         </div>
     </nav>
